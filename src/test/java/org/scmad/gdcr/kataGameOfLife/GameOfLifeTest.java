@@ -28,4 +28,12 @@ public class GameOfLifeTest {
 				panel.toString());
 	}
 
+	@Test
+	public void loadInitialPanel() throws Exception {
+		String initialPanel = "....*...\n.*......\n......*.\n.*...*..\n";
+		Panel panel = game.createPanel(initialPanel);
+		assertEquals(initialPanel, panel.toString());
+
+	}
+
 }

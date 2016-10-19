@@ -8,4 +8,9 @@ public class GameOfLife {
 		return this.data;
 	}
 
+	public Panel createPanel(String initialPanel) {
+		this.data = new Panel(initialPanel);
+		return this.data;
+	}
+
 }
