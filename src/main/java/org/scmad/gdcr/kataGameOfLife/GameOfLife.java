@@ -1,19 +1,11 @@
 package org.scmad.gdcr.kataGameOfLife;
 
 public class GameOfLife {
-	int rows, columns;
+	Panel data = new Panel(0, 0);
 
-	public GameOfLife(int rows, int columns) {
-		this.rows = rows;
-		this.columns = columns;
-	}
-
-	public int getPanelRows() {
-		return rows;
-	}
-
-	public int getPanelColumns() {
-		return columns;
+	public Panel createPanel(int rows, int columns) {
+		this.data = new Panel(rows, columns);
+		return this.data;
 	}
 
 }

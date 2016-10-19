@@ -8,16 +8,18 @@ public class GameOfLifeTest {
 
 	@Test
 	public void thePanelCouldHave4rowsAnd8Columns() {
-		GameOfLife game = new GameOfLife(4, 8);
-		assertEquals(4, game.getPanelRows());
-		assertEquals(8, game.getPanelColumns());
+		GameOfLife game = new GameOfLife();
+		Panel panel = game.createPanel(4, 8);
+		assertEquals(4, panel.getRows());
+		assertEquals(8, panel.getColumns());
 	}
 
 	@Test
 	public void thePanelCouldHave8rowsAnd12Columns() {
-		GameOfLife game = new GameOfLife(8, 12);
-		assertEquals(8, game.getPanelRows());
-		assertEquals(12, game.getPanelColumns());
+		GameOfLife game = new GameOfLife();
+		Panel panel = game.createPanel(8, 12);
+		assertEquals(8, panel.getRows());
+		assertEquals(12, panel.getColumns());
 	}
 
 }
