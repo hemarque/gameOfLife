@@ -33,7 +33,22 @@ public class GameOfLifeTest {
 		String initialPanel = "....*...\n.*......\n......*.\n.*...*..\n";
 		Panel panel = game.createPanel(initialPanel);
 		assertEquals(initialPanel, panel.toString());
+	}
 
+	@Test
+	public void testNeighbours() throws Exception {
+		String initialPanel = "...\n.*.\n...\n";
+		String expectedNeighbours = "........";
+		Panel panel = game.createPanel(initialPanel);
+		assertEquals(expectedNeighbours, panel.getNeighbours(1, 1));
+	}
+
+	@Test
+	public void testNeighboursOnBorders() throws Exception {
+		String initialPanel = "...\n*..\n...\n";
+		String expectedNeighbours = ".....";
+		Panel panel = game.createPanel(initialPanel);
+		assertEquals(expectedNeighbours, panel.getNeighbours(1, 0));
 	}
 
 }
