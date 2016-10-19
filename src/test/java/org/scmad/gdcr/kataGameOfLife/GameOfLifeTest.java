@@ -69,4 +69,22 @@ public class GameOfLifeTest {
 		assertEquals(expectedIteration, nextIteration);
 	}
 
+	@Test
+	public void AnyLiveCellWith2Or3LiveNeighboursLives()
+			throws Exception {
+		String firstIteration = "*-*\n***\n***\n";
+		String expectedIteration = "*.*\n...\n*.*\n";
+		String nextIteration = game.evolve(firstIteration);
+		assertEquals(expectedIteration, nextIteration);
+	}
+
+	@Test
+	public void AnyDeadCellWithExactlyThreeLiveNeighboursBecomesALiveCell()
+			throws Exception {
+		String firstIteration = "***\n...\n...\n";
+		String expectedIteration = ".*.\n.*.\n...\n";
+		String nextIteration = game.evolve(firstIteration);
+		assertEquals(expectedIteration, nextIteration);
+	}
+
 }

@@ -23,6 +23,8 @@ public class GameOfLife {
 						column);
 				if ((counter < 2) || (counter > 3))
 					nextPanel.killCell(row, column);
+				if (counter == 3)
+					nextPanel.liveCell(row, column);
 			}
 		}
 		return nextPanel.toString();

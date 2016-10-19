@@ -81,4 +81,8 @@ public class Panel {
 	public void killCell(int row, int column) {
 		matrix[row][column] = '.';
 	}
+
+	public void liveCell(int row, int column) {
+		matrix[row][column] = '*';
+	}
 }
