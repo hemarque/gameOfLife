@@ -19,7 +19,7 @@ public class GameOfLife {
 		for (int row = 0; row < panel.getRows(); row++) {
 			for (int column = 0; column < panel
 					.getColumns(); column++) {
-				int counter = getNumberOfNeighbours(panel, row,
+				int counter = panel.getNumberOfNeighbours(row,
 						column);
 				if ((counter < 2) || (counter > 3))
 					nextPanel.killCell(row, column);
@@ -28,18 +28,6 @@ public class GameOfLife {
 			}
 		}
 		return nextPanel.toString();
-	}
-
-	private int getNumberOfNeighbours(Panel panel, int row,
-			int column) {
-		String neighbours = panel.getNeighbours(row, column);
-		int counter = 0;
-		for (int i = 0; i < neighbours.length(); i++) {
-			if (neighbours.charAt(i) == '*') {
-				counter++;
-			}
-		}
-		return counter;
 	}
 
 }

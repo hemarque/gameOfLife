@@ -26,6 +26,43 @@ public class Panel {
 		return rows;
 	}
 
+	public void killCell(int row, int column) {
+		matrix[row][column] = '.';
+	}
+
+	public void liveCell(int row, int column) {
+		matrix[row][column] = '*';
+	}
+
+	public int getNumberOfNeighbours(int row, int column) {
+		String neighbours = getNeighbours(row, column);
+		int counter = 0;
+		for (int i = 0; i < neighbours.length(); i++) {
+			if (neighbours.charAt(i) == '*') {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
+	private String getNeighbours(int row, int column) {
+		String neighbours = getCell(row - 1, column - 1)
+				+ getCell(row - 1, column)
+				+ getCell(row - 1, column + 1)
+				+ getCell(row, column - 1) + getCell(row, column + 1)
+				+ getCell(row + 1, column - 1)
+				+ getCell(row + 1, column)
+				+ getCell(row + 1, column + 1);
+		return neighbours;
+	}
+
+	private String getCell(int row, int column) {
+		String cell = ((row >= 0) && (row < this.rows))
+				&& ((column >= 0) && (column < this.columns))
+						? "" + matrix[row][column] : "";
+		return cell;
+	}
+
 	public String toString() {
 		return matrixToString();
 	}
@@ -58,31 +95,5 @@ public class Panel {
 			}
 		}
 
-	}
-
-	public String getNeighbours(int row, int column) {
-		String neighbours = getCell(row - 1, column - 1)
-				+ getCell(row - 1, column)
-				+ getCell(row - 1, column + 1)
-				+ getCell(row, column - 1) + getCell(row, column + 1)
-				+ getCell(row + 1, column - 1)
-				+ getCell(row + 1, column)
-				+ getCell(row + 1, column + 1);
-		return neighbours;
-	}
-
-	private String getCell(int row, int column) {
-		String cell = ((row >= 0) && (row < this.rows))
-				&& ((column >= 0) && (column < this.columns))
-						? "" + matrix[row][column] : "";
-		return cell;
-	}
-
-	public void killCell(int row, int column) {
-		matrix[row][column] = '.';
-	}
-
-	public void liveCell(int row, int column) {
-		matrix[row][column] = '*';
 	}
 }

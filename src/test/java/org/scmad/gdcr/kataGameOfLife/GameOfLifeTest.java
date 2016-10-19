@@ -38,17 +38,19 @@ public class GameOfLifeTest {
 	@Test
 	public void testNeighbours() throws Exception {
 		String initialPanel = "...\n.*.\n...\n";
-		String expectedNeighbours = "........";
+		int expectedNeighbours = 0;
 		Panel panel = game.createPanel(initialPanel);
-		assertEquals(expectedNeighbours, panel.getNeighbours(1, 1));
+		assertEquals(expectedNeighbours,
+				panel.getNumberOfNeighbours(1, 1));
 	}
 
 	@Test
 	public void testNeighboursOnBorders() throws Exception {
 		String initialPanel = "...\n*..\n...\n";
-		String expectedNeighbours = ".....";
+		int expectedNeighbours = 0;
 		Panel panel = game.createPanel(initialPanel);
-		assertEquals(expectedNeighbours, panel.getNeighbours(1, 0));
+		assertEquals(expectedNeighbours,
+				panel.getNumberOfNeighbours(1, 0));
 	}
 
 	@Test
@@ -83,6 +85,14 @@ public class GameOfLifeTest {
 			throws Exception {
 		String firstIteration = "***\n...\n...\n";
 		String expectedIteration = ".*.\n.*.\n...\n";
+		String nextIteration = game.evolve(firstIteration);
+		assertEquals(expectedIteration, nextIteration);
+	}
+
+	@Test
+	public void globalTest() throws Exception {
+		String firstIteration = "........\n....*...\n...**...\n........\n";
+		String expectedIteration = "........\n...**...\n...**...\n........\n";
 		String nextIteration = game.evolve(firstIteration);
 		assertEquals(expectedIteration, nextIteration);
 	}
