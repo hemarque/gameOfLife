@@ -72,8 +72,13 @@ public class Panel {
 	}
 
 	private String getCell(int row, int column) {
-		return ((row >= 0) && (row <= this.rows))
-				&& ((column >= 0) && (column <= this.columns))
+		String cell = ((row >= 0) && (row < this.rows))
+				&& ((column >= 0) && (column < this.columns))
 						? "" + matrix[row][column] : "";
+		return cell;
+	}
+
+	public void killCell(int row, int column) {
+		matrix[row][column] = '.';
 	}
 }

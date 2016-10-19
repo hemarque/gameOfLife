@@ -13,16 +13,31 @@ public class GameOfLife {
 		return this.data;
 	}
 
-	// public String evolve(String firstIteration) {
-	// Panel initialIteration = createPanel(firstIteration);
-	// for (int row = 0; row < initialIteration.getRows(); row++) {
-	// for (int column = 0; column < initialIteration
-	// .getColumns(); column++) {
-	// String neighbours = initialIteration
-	// .getNeighbours(row, column);
-	// }
-	// }
-	// return null;
-	// }
+	public String evolve(String firstIteration) {
+		Panel panel = createPanel(firstIteration);
+		Panel nextPanel = createPanel(firstIteration);
+		for (int row = 0; row < panel.getRows(); row++) {
+			for (int column = 0; column < panel
+					.getColumns(); column++) {
+				int counter = getNumberOfNeighbours(panel, row,
+						column);
+				if (counter < 2)
+					nextPanel.killCell(row, column);
+			}
+		}
+		return nextPanel.toString();
+	}
+
+	private int getNumberOfNeighbours(Panel panel, int row,
+			int column) {
+		String neighbours = panel.getNeighbours(row, column);
+		int counter = 0;
+		for (int i = 0; i < neighbours.length(); i++) {
+			if (neighbours.charAt(i) == '*') {
+				counter++;
+			}
+		}
+		return counter;
+	}
 
 }

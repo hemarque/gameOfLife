@@ -51,4 +51,13 @@ public class GameOfLifeTest {
 		assertEquals(expectedNeighbours, panel.getNeighbours(1, 0));
 	}
 
+	@Test
+	public void AnyLiveCellWithFewerThan2LiveNeighboursDies()
+			throws Exception {
+		String firstIteration = "...\n.*.\n...\n";
+		String expectedIteration = "...\n...\n...\n";
+		String nextIteration = game.evolve(firstIteration);
+		assertEquals(expectedIteration, nextIteration);
+	}
+
 }
