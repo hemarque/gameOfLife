@@ -21,7 +21,7 @@ public class GameOfLife {
 					.getColumns(); column++) {
 				int counter = getNumberOfNeighbours(panel, row,
 						column);
-				if (counter < 2)
+				if ((counter < 2) || (counter > 3))
 					nextPanel.killCell(row, column);
 			}
 		}
